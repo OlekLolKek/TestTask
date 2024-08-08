@@ -3222,7 +3222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2026257524}
   m_Layer: 5
-  m_Name: Buttons Container
+  m_Name: Start Buttons Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
