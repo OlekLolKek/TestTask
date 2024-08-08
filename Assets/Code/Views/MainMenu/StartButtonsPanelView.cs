@@ -7,19 +7,46 @@ namespace Code.Views.MainMenu
 {
     public sealed class StartButtonsPanelView : BaseView
     {
-        [SerializeField] private Button _newSimulationButton;
-        [SerializeField] private Button _loadSimulationButton;
+        #region Events
 
         public event Action NewSimulationButtonClick;
         public event Action LoadSimulationButtonClick;
+
+        #endregion
         
+        
+        #region Fields
+
+        [SerializeField] private Button _newSimulationButton;
+        [SerializeField] private Button _loadSimulationButton;
+
+        #endregion
+
+
+        #region Mono
+
         private void OnEnable()
+        {
+            Subscribe();
+        }
+
+        private void OnDisable()
+        {
+            Unsubscribe();
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        private void Subscribe()
         {
             _newSimulationButton.onClick.AddListener(OnNewSimulationButtonClick);
             _loadSimulationButton.onClick.AddListener(OnLoadSimulationButtonClick);
         }
 
-        private void OnDisable()
+        private void Unsubscribe()
         {
             _newSimulationButton.onClick.RemoveListener(OnNewSimulationButtonClick);
             _loadSimulationButton.onClick.RemoveListener(OnLoadSimulationButtonClick);
@@ -34,5 +61,7 @@ namespace Code.Views.MainMenu
         {
             LoadSimulationButtonClick?.Invoke();
         }
+
+        #endregion
     }
 }

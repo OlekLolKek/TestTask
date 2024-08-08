@@ -1,7 +1,9 @@
 ﻿namespace Code.Interfaces
 {
-    public interface IActivatableView
+    public interface IActivatable
     {
+        bool IsActive { get; }
+        
         void SetActive(bool active);
     }
 }

@@ -6,9 +6,17 @@ namespace Code.Data
     [CreateAssetMenu(fileName = nameof(GameConfig), menuName = "Config/" + nameof(GameConfig), order = 0)]
     public sealed class GameConfig : ScriptableObject
     {
+        #region Properties
+
         [field: SerializeField] public int FieldSize { get; private set; }
         [field: SerializeField] public int AnimalCount { get; private set; }
         [field: SerializeField] public int AnimalSpeed { get; private set; }
+
+
+        #endregion
+
+
+        #region Methods
 
         public void SetFieldSize(int fieldSize)
         {
@@ -30,5 +38,7 @@ namespace Code.Data
         {
             return FieldSize * FieldSize / 2;
         }
+
+        #endregion
     }
 }

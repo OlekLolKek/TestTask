@@ -8,6 +8,19 @@ namespace Code.Views.MainMenu
 {
     public sealed class NewSimulationPanelView : BaseView
     {
+        #region Events
+
+        public event Action<int> FieldSizeSliderValueChanged;
+        public event Action<int> AnimalCountSliderValueChanged;
+        public event Action<int> AnimalSpeedSliderValueChanged;
+        public event Action CreateButtonClick;
+        public event Action BackButtonClick;
+
+        #endregion
+        
+        
+        #region Fields
+
         [Header("Field Size")]
         [SerializeField] private Slider _fieldSizeSlider;
         [SerializeField] private TMP_Text _fieldSizeText;
@@ -24,18 +37,27 @@ namespace Code.Views.MainMenu
         [SerializeField] private Button _createButton;
         [SerializeField] private Button _backButton;
 
-        public event Action<int> FieldSizeSliderValueChanged;
-        public event Action<int> AnimalCountSliderValueChanged;
-        public event Action<int> AnimalSpeedSliderValueChanged;
-        public event Action CreateButtonClick;
-        public event Action BackButtonClick;
+        #endregion
 
-        public void SetAnimalCountSliderMaxValue(int maxValue)
-        {
-            _animalSpeedSlider.maxValue = maxValue;
-        }
+
+        #region Mono
 
         private void OnEnable()
+        {
+            Subscribe();
+        }
+
+        private void OnDisable()
+        {
+            Unsubscribe();
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        private void Subscribe()
         {
             _fieldSizeSlider.onValueChanged.AddListener(OnFieldSizeSliderValueChanged);
             _animalCountSlider.onValueChanged.AddListener(OnAnimalCountSliderValueChanged);
@@ -44,13 +66,18 @@ namespace Code.Views.MainMenu
             _backButton.onClick.AddListener(OnBackButtonClick);
         }
 
-        private void OnDisable()
+        private void Unsubscribe()
         {
             _fieldSizeSlider.onValueChanged.RemoveListener(OnFieldSizeSliderValueChanged);
             _animalCountSlider.onValueChanged.RemoveListener(OnAnimalCountSliderValueChanged);
             _animalSpeedSlider.onValueChanged.RemoveListener(OnAnimalSpeedSliderValueChanged);
             _createButton.onClick.RemoveListener(OnCreateButtonClick);
             _backButton.onClick.RemoveListener(OnBackButtonClick);
+        }
+
+        public void SetAnimalCountSliderMaxValue(int maxValue)
+        {
+            _animalCountSlider.maxValue = maxValue;
         }
 
         private void OnFieldSizeSliderValueChanged(float value)
@@ -68,18 +95,21 @@ namespace Code.Views.MainMenu
             AnimalSpeedSliderValueChanged?.Invoke((int)value);
         }
 
-        public void SetFieldSizeText(int value)
+        public void SetFieldSize(int value)
         {
+            _fieldSizeSlider.value = value;
             _fieldSizeText.text = value.ToString();
         }
 
-        public void SetAnimalCountText(int value)
+        public void SetAnimalCount(int value)
         {
+            _animalCountSlider.value = value;
             _animalCountText.text = value.ToString();
         }
 
-        public void SetAnimalSpeedText(int value)
+        public void SetAnimalSpeed(int value)
         {
+            _animalSpeedSlider.value = value;
             _animalSpeedText.text = value.ToString();
         }
 
@@ -92,5 +122,7 @@ namespace Code.Views.MainMenu
         {
             BackButtonClick?.Invoke();
         }
+
+        #endregion
     }
 }
