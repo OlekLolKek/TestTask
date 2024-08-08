@@ -10,16 +10,19 @@ namespace Code.Views.MainMenu
         [SerializeField] private Slider _fieldSizeSlider;
         [SerializeField] private Slider _animalCountSlider;
         [SerializeField] private Slider _animalSpeedSlider;
+        [SerializeField] private Button _createButton;
 
         public event Action<float> FieldSizeSliderValueChanged;
         public event Action<float> AnimalCountSliderValueChanged;
         public event Action<float> AnimalSpeedSliderValueChanged;
+        public event Action CreateButtonClick;
 
         private void OnEnable()
         {
             _fieldSizeSlider.onValueChanged.AddListener(OnFieldSizeSliderValueChanged);
             _animalCountSlider.onValueChanged.AddListener(OnAnimalCountSliderValueChanged);
             _animalSpeedSlider.onValueChanged.AddListener(OnAnimalSpeedSliderValueChanged);
+            _createButton.onClick.AddListener(OnCreateButtonClick);
         }
 
         private void OnDisable()
@@ -27,6 +30,7 @@ namespace Code.Views.MainMenu
             _fieldSizeSlider.onValueChanged.RemoveListener(OnFieldSizeSliderValueChanged);
             _animalCountSlider.onValueChanged.RemoveListener(OnAnimalCountSliderValueChanged);
             _animalSpeedSlider.onValueChanged.RemoveListener(OnAnimalSpeedSliderValueChanged);
+            _createButton.onClick.RemoveListener(OnCreateButtonClick);
         }
 
         private void OnFieldSizeSliderValueChanged(float value)
@@ -42,6 +46,11 @@ namespace Code.Views.MainMenu
         private void OnAnimalSpeedSliderValueChanged(float value)
         {
             AnimalSpeedSliderValueChanged?.Invoke(value);
+        }
+
+        private void OnCreateButtonClick()
+        {
+            CreateButtonClick?.Invoke();
         }
     }
 }
