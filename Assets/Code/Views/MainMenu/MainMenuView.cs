@@ -38,13 +38,13 @@ namespace Code.Views.MainMenu
             ShowButtonsPanel();
         }
 
-        private void ShowButtonsPanel()
+        public void ShowButtonsPanel()
         {
             ButtonsPanel.SetActive(true);
             NewSimulationPanel.SetActive(false);
         }
 
-        private void ShowNewSimulationPanel()
+        public void ShowNewSimulationPanel()
         {
             ButtonsPanel.SetActive(false);
             NewSimulationPanel.SetActive(true);

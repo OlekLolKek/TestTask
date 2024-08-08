@@ -15,6 +15,8 @@ namespace Code.Controllers.Menu
         private void Start()
         {
             _newSimulationPanelController = new NewSimulationPanelController(_mainMenu.NewSimulationPanel, _config);
+            
+            _mainMenu.ShowButtonsPanel();
         }
 
         private void OnDestroy()

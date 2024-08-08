@@ -2197,8 +2197,9 @@ GameObject:
   - component: {fileID: 1289092266}
   - component: {fileID: 1289092268}
   - component: {fileID: 1289092267}
+  - component: {fileID: 1289092269}
   m_Layer: 5
-  m_Name: Create Simulation Window
+  m_Name: New Simulation Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2267,6 +2268,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289092265}
   m_CullTransparentMesh: 1
+--- !u!114 &1289092269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289092265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cefe01051f54c10b1718d2c4fefce9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fieldSizeSlider: {fileID: 248917979}
+  _fieldSizeText: {fileID: 1538266439}
+  _animalCountSlider: {fileID: 1278300994}
+  _animalCountText: {fileID: 124377987}
+  _animalSpeedSlider: {fileID: 1466666763}
+  _animalSpeedText: {fileID: 491127903}
+  _createButton: {fileID: 944979974}
+  _backButton: {fileID: 2016575261}
 --- !u!1 &1313232963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CREATE SIMULATION
+  m_text: NEW SIMULATION
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3599,6 +3620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2026257524}
+  - component: {fileID: 2026257525}
   m_Layer: 5
   m_Name: Start Buttons Panel
   m_TagString: Untagged
@@ -3627,6 +3649,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2026257525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026257523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb238dfd80049a6ae6355756865f1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _newSimulationButton: {fileID: 45716039}
+  _loadSimulationButton: {fileID: 893070631}
 --- !u!1 &2075791218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,6 +3811,7 @@ GameObject:
   - component: {fileID: 2130712380}
   - component: {fileID: 2130712379}
   - component: {fileID: 2130712378}
+  - component: {fileID: 2130712382}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3866,6 +3903,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2130712382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130712377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdfd2561bd142a1b5228fa6a4734ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ButtonsPanel>k__BackingField: {fileID: 2026257525}
+  <NewSimulationPanel>k__BackingField: {fileID: 1289092269}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

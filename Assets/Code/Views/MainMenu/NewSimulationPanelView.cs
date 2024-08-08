@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,19 @@ namespace Code.Views.MainMenu
 {
     public sealed class NewSimulationPanelView : BaseView
     {
+        [Header("Field Size")]
         [SerializeField] private Slider _fieldSizeSlider;
+        [SerializeField] private TMP_Text _fieldSizeText;
+        
+        [Header("Animal Count")]
         [SerializeField] private Slider _animalCountSlider;
+        [SerializeField] private TMP_Text _animalCountText;
+        
+        [Header("Animal Speed")]
         [SerializeField] private Slider _animalSpeedSlider;
+        [SerializeField] private TMP_Text _animalSpeedText;
+        
+        [Header("Buttons")]
         [SerializeField] private Button _createButton;
         [SerializeField] private Button _backButton;
 
@@ -55,6 +66,21 @@ namespace Code.Views.MainMenu
         private void OnAnimalSpeedSliderValueChanged(float value)
         {
             AnimalSpeedSliderValueChanged?.Invoke((int)value);
+        }
+
+        public void SetFieldSizeText(int value)
+        {
+            _fieldSizeText.text = value.ToString();
+        }
+
+        public void SetAnimalCountText(int value)
+        {
+            _animalCountText.text = value.ToString();
+        }
+
+        public void SetAnimalSpeedText(int value)
+        {
+            _animalSpeedText.text = value.ToString();
         }
 
         private void OnCreateButtonClick()
