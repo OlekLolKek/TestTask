@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Data;
 using Code.Interfaces;
+using Code.Models;
 using Code.Views.MainMenu;
 using UnityEngine;
 
@@ -29,12 +30,13 @@ namespace Code.Controllers.Menu
         
         private void Start()
         {
-            _newSimulationPanelController = new NewSimulationPanelController(_view.NewSimulationPanel, _config);
+            var sceneChangeModel = new SceneChangeModel(_config.SceneConfig);
+            
+            _newSimulationPanelController = new NewSimulationPanelController(_view.NewSimulationPanel, _config, sceneChangeModel);
             _startButtonsPanelController = new StartButtonsPanelController(_view.StartButtonsPanel);
-            _sceneController = new SceneController(_config.SceneConfig);
+            _sceneController = new SceneController(sceneChangeModel);
 
             _newSimulationPanelController.BackButtonClick += SwitchToButtonsPanel;
-            _newSimulationPanelController.CreateButtonClick += LoadGameScene;
             _startButtonsPanelController.NewSimulationButtonClick += SwitchToNewSimulationPanel;
             
             _panelControllers.Add(_newSimulationPanelController);
@@ -49,7 +51,6 @@ namespace Code.Controllers.Menu
         private void OnDestroy()
         {
             _newSimulationPanelController.BackButtonClick -= SwitchToButtonsPanel;
-            _newSimulationPanelController.CreateButtonClick -= LoadGameScene;
             _startButtonsPanelController.NewSimulationButtonClick -= SwitchToNewSimulationPanel;
             
             _controllers.Cleanup();
@@ -81,11 +82,6 @@ namespace Code.Controllers.Menu
             }
             
             activePanel.SetActive(true);
-        }
-
-        private void LoadGameScene()
-        {
-            _sceneController.LoadGameScene();
         }
 
         #endregion

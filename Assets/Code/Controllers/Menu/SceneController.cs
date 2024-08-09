@@ -1,33 +1,41 @@
-﻿using Code.Data;
+﻿using Code.Interfaces.MonoBehaviourCycle;
+using Code.Models;
 using UnityEngine.SceneManagement;
 
 
 namespace Code.Controllers.Menu
 {
-    public sealed class SceneController
+    public sealed class SceneController : ICleanable
     {
         #region Fields
 
-        private readonly SceneConfig _config;
+        private readonly SceneChangeModel _model;
 
         #endregion
         
         
         #region CodeLife
 
-        public SceneController(SceneConfig config)
+        public SceneController(SceneChangeModel model)
         {
-            _config = config;
+            _model = model;
+
+            _model.ChangeSceneToIndexRequest += LoadSceneToIndex;
+        }
+
+        public void Cleanup()
+        {
+            _model.ChangeSceneToIndexRequest -= LoadSceneToIndex;
         }
 
         #endregion
-        
-        
+
+
         #region Methods
 
-        public void LoadGameScene()
+        private void LoadSceneToIndex(int sceneIndex)
         {
-            SceneManager.LoadScene(_config.GameSceneIndex);
+            SceneManager.LoadScene(sceneIndex);
         }
 
         #endregion

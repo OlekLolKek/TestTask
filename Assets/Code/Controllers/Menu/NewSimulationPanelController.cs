@@ -2,6 +2,7 @@
 using Code.Data;
 using Code.Interfaces;
 using Code.Interfaces.MonoBehaviourCycle;
+using Code.Models;
 using Code.Views.MainMenu;
 
 
@@ -12,7 +13,6 @@ namespace Code.Controllers.Menu
         #region Events
 
         public event Action BackButtonClick;
-        public event Action CreateButtonClick;
 
         #endregion
 
@@ -27,6 +27,7 @@ namespace Code.Controllers.Menu
         #region Fields
 
         private readonly NewSimulationPanelView _view;
+        private readonly SceneChangeModel _sceneChangeModel;
         private readonly GameConfig _config;
 
         #endregion
@@ -34,10 +35,12 @@ namespace Code.Controllers.Menu
 
         #region CodeLife
 
-        public NewSimulationPanelController(NewSimulationPanelView view, GameConfig config)
+        public NewSimulationPanelController(NewSimulationPanelView view, GameConfig config,
+            SceneChangeModel sceneChangeModel)
         {
             _view = view;
             _config = config;
+            _sceneChangeModel = sceneChangeModel;
         }
 
         public void Cleanup()
@@ -117,7 +120,7 @@ namespace Code.Controllers.Menu
 
         private void OnCreateButtonClick()
         {
-            CreateButtonClick?.Invoke();
+            _sceneChangeModel.RequestSceneChangeToGame();
         }
 
         #endregion
