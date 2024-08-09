@@ -19,6 +19,9 @@ namespace Code.Data
         [field: SerializeField] public int AnimalSpawnHeight { get; private set; }
         [field: SerializeField] public GameObject WorldPrefab { get; private set; }
 
+        [field: Header("Scene settings")]
+        [field: SerializeField] public SceneConfig SceneConfig { get; private set; }
+
         #endregion
 
 
