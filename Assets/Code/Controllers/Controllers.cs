@@ -5,7 +5,7 @@ using Code.Interfaces.MonoBehaviourCycle;
 
 namespace Code.Controllers
 {
-    public sealed class Controllers : IStartable, IFixedUpdatable, IUpdatable, ILateUpdatable, IDisposable
+    public sealed class Controllers : IStartable, IFixedUpdatable, IUpdatable, ILateUpdatable, ICleanable
     {
         #region Fields
 
@@ -13,7 +13,7 @@ namespace Code.Controllers
         private readonly HashSet<IFixedUpdatable> _fixedUpdatables = new();
         private readonly HashSet<IUpdatable> _updatables = new();
         private readonly HashSet<ILateUpdatable> _lateUpdatables = new();
-        private readonly HashSet<IDisposable> _disposables = new();
+        private readonly HashSet<ICleanable> _cleanables = new();
 
         #endregion
 
@@ -34,8 +34,8 @@ namespace Code.Controllers
             if (controller is ILateUpdatable lateUpdatable)
                 _lateUpdatables.Add(lateUpdatable);
             
-            if (controller is IDisposable disposable)
-                _disposables.Add(disposable);
+            if (controller is ICleanable cleanable)
+                _cleanables.Add(cleanable);
         }
 
         public void RemoveController(IController controller)
@@ -52,8 +52,8 @@ namespace Code.Controllers
             if (controller is ILateUpdatable lateUpdatable && _lateUpdatables.Contains(lateUpdatable))
                 _lateUpdatables.Remove(lateUpdatable);
             
-            if (controller is IDisposable disposable && _disposables.Contains(disposable))
-                _disposables.Remove(disposable);
+            if (controller is ICleanable cleanable && _cleanables.Contains(cleanable))
+                _cleanables.Remove(cleanable);
         }
         
         public void Start()
@@ -88,11 +88,11 @@ namespace Code.Controllers
             }
         }
 
-        public void Dispose()
+        public void Cleanup()
         {
-            foreach (var disposable in _disposables)
+            foreach (var cleanable in _cleanables)
             {
-                disposable.Dispose();
+                cleanable.Cleanup();
             }
         }
 
