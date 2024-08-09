@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Views.Game;
+using UnityEngine;
 
 
 namespace Code.Data
@@ -12,6 +13,8 @@ namespace Code.Data
         [field: SerializeField] public int AnimalCount { get; private set; }
         [field: SerializeField] public int AnimalSpeed { get; private set; }
 
+        [field: SerializeField] public AnimalView AnimalPrefab { get; private set; }
+        [field: SerializeField] public GameObject WorldPrefab { get; private set; }
 
         #endregion
 
