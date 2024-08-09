@@ -11,6 +11,7 @@ namespace Code.Controllers.Menu
         #region Events
 
         public event Action BackButtonClick;
+        public event Action CreateButtonClick;
 
         #endregion
 
@@ -50,6 +51,7 @@ namespace Code.Controllers.Menu
             _view.AnimalSpeedSliderValueChanged += OnAnimalSpeedSliderValueChanged;
 
             _view.BackButtonClick += OnBackButtonClick;
+            _view.CreateButtonClick += OnCreateButtonClick;
         }
 
         private void Unsubscribe()
@@ -59,6 +61,7 @@ namespace Code.Controllers.Menu
             _view.AnimalSpeedSliderValueChanged -= OnAnimalSpeedSliderValueChanged;
             
             _view.BackButtonClick -= OnBackButtonClick;
+            _view.CreateButtonClick -= OnCreateButtonClick;
         }
 
         public void SetActive(bool active)
@@ -102,6 +105,11 @@ namespace Code.Controllers.Menu
         private void OnBackButtonClick()
         {
             BackButtonClick?.Invoke();
+        }
+
+        private void OnCreateButtonClick()
+        {
+            CreateButtonClick?.Invoke();
         }
 
         #endregion

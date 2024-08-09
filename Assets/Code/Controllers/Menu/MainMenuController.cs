@@ -18,6 +18,7 @@ namespace Code.Controllers.Menu
         
         private NewSimulationPanelController _newSimulationPanelController;
         private StartButtonsPanelController _startButtonsPanelController;
+        private SceneController _sceneController;
 
         #endregion
 
@@ -28,8 +29,10 @@ namespace Code.Controllers.Menu
         {
             _newSimulationPanelController = new NewSimulationPanelController(_view.NewSimulationPanel, _config);
             _startButtonsPanelController = new StartButtonsPanelController(_view.StartButtonsPanel);
+            _sceneController = new SceneController(_config.SceneConfig);
 
             _newSimulationPanelController.BackButtonClick += SwitchToButtonsPanel;
+            _newSimulationPanelController.CreateButtonClick += LoadGameScene;
             _startButtonsPanelController.NewSimulationButtonClick += SwitchToNewSimulationPanel;
             
             _panelControllers.Add(_newSimulationPanelController);
@@ -41,7 +44,7 @@ namespace Code.Controllers.Menu
         private void OnDestroy()
         {
             _newSimulationPanelController.BackButtonClick -= SwitchToButtonsPanel;
-            
+            _newSimulationPanelController.CreateButtonClick -= LoadGameScene;
             _startButtonsPanelController.NewSimulationButtonClick -= SwitchToNewSimulationPanel;
             
             foreach (var panelController in _panelControllers)
@@ -77,6 +80,11 @@ namespace Code.Controllers.Menu
             }
             
             activePanel.SetActive(true);
+        }
+
+        private void LoadGameScene()
+        {
+            _sceneController.LoadGameScene();
         }
 
         #endregion
