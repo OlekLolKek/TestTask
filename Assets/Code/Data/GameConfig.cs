@@ -8,12 +8,15 @@ namespace Code.Data
     public sealed class GameConfig : ScriptableObject
     {
         #region Properties
-
+        
+        [field: Header("In-game adjustable values")]
         [field: SerializeField] public int FieldSize { get; private set; }
         [field: SerializeField] public int AnimalCount { get; private set; }
         [field: SerializeField] public int AnimalSpeed { get; private set; }
 
+        [field: Header("Spawn settings")]
         [field: SerializeField] public AnimalView AnimalPrefab { get; private set; }
+        [field: SerializeField] public int AnimalSpawnHeight { get; private set; }
         [field: SerializeField] public GameObject WorldPrefab { get; private set; }
 
         #endregion
