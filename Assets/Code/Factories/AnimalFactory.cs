@@ -16,8 +16,9 @@ namespace Code.Factories
         public AnimalView Create(GameConfig config, GameObject world)
         {
             var worldPosition = world.transform.position;
-            var offsetX = Random.Range(-config.FieldSize / 2, config.FieldSize / 2);
-            var offsetZ = Random.Range(-config.FieldSize / 2, config.FieldSize / 2);
+            var fieldSize = (float)config.FieldSize;
+            var offsetX = Random.Range(-fieldSize / 2, fieldSize / 2);
+            var offsetZ = Random.Range(-fieldSize / 2, fieldSize / 2);
 
             var offset = new Vector3(offsetX, config.AnimalSpawnHeight, offsetZ);
 

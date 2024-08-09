@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Code.Data
 {
+    /// <summary>
+    /// Config that stores the Scenes' indexes
+    /// </summary>
     [Serializable]
     public sealed class SceneConfig
     {
