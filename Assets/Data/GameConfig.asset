@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86afe911e4434d5680c21ef09e6a22c2, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  <FieldSize>k__BackingField: 50
-  <AnimalCount>k__BackingField: 25
-  <AnimalSpeed>k__BackingField: 1
+  <FieldSize>k__BackingField: 138
+  <AnimalCount>k__BackingField: 957
+  <AnimalSpeed>k__BackingField: 39
   <AnimalPrefab>k__BackingField: {fileID: 8178059999691956253, guid: 1c65a295e3a1f71468fee34017bcbe19, type: 3}
+  <AnimalSpawnHeight>k__BackingField: 1
   <WorldPrefab>k__BackingField: {fileID: 4292484939820765096, guid: 49870e64a2d84fd46ba32620c15f3f6f, type: 3}
+  <SceneConfig>k__BackingField:
+    <MainMenuSceneIndex>k__BackingField: 0
+    <GameSceneIndex>k__BackingField: 1

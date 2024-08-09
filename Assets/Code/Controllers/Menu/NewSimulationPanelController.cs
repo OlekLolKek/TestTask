@@ -1,12 +1,13 @@
 ﻿using System;
 using Code.Data;
 using Code.Interfaces;
+using Code.Interfaces.MonoBehaviourCycle;
 using Code.Views.MainMenu;
 
 
 namespace Code.Controllers.Menu
 {
-    public sealed class NewSimulationPanelController : IActivatable
+    public sealed class NewSimulationPanelController : IActivatable, ICleanable
     {
         #region Events
 
@@ -39,47 +40,54 @@ namespace Code.Controllers.Menu
             _config = config;
         }
 
+        public void Cleanup()
+        {
+            if (IsActive)
+            {
+                SubscribeToView(false);
+            }
+        }
+
         #endregion
 
 
         #region Methods
 
-        private void Subscribe()
+        private void SubscribeToView(bool subscribe)
         {
-            _view.FieldSizeSliderValueChanged += OnFieldSizeSliderValueChanged;
-            _view.AnimalCountSliderValueChanged += OnAnimalCountSliderValueChanged;
-            _view.AnimalSpeedSliderValueChanged += OnAnimalSpeedSliderValueChanged;
+            if (subscribe)
+            {
+                _view.FieldSizeSliderValueChanged += OnFieldSizeSliderValueChanged;
+                _view.AnimalCountSliderValueChanged += OnAnimalCountSliderValueChanged;
+                _view.AnimalSpeedSliderValueChanged += OnAnimalSpeedSliderValueChanged;
 
-            _view.BackButtonClick += OnBackButtonClick;
-            _view.CreateButtonClick += OnCreateButtonClick;
-        }
-
-        private void Unsubscribe()
-        {
-            _view.FieldSizeSliderValueChanged -= OnFieldSizeSliderValueChanged;
-            _view.AnimalCountSliderValueChanged -= OnAnimalCountSliderValueChanged;
-            _view.AnimalSpeedSliderValueChanged -= OnAnimalSpeedSliderValueChanged;
+                _view.BackButtonClick += OnBackButtonClick;
+                _view.CreateButtonClick += OnCreateButtonClick;
+            }
+            else
+            {
+                _view.FieldSizeSliderValueChanged -= OnFieldSizeSliderValueChanged;
+                _view.AnimalCountSliderValueChanged -= OnAnimalCountSliderValueChanged;
+                _view.AnimalSpeedSliderValueChanged -= OnAnimalSpeedSliderValueChanged;
             
-            _view.BackButtonClick -= OnBackButtonClick;
-            _view.CreateButtonClick -= OnCreateButtonClick;
+                _view.BackButtonClick -= OnBackButtonClick;
+                _view.CreateButtonClick -= OnCreateButtonClick;
+            }
+            
         }
 
         public void SetActive(bool active)
         {
             IsActive = active;
             _view.SetActive(IsActive);
+            
+            SubscribeToView(IsActive);
 
             if (IsActive)
             {
-                Subscribe();
-                
                 _view.SetFieldSize(_config.FieldSize);
                 _view.SetAnimalCount(_config.AnimalCount);
                 _view.SetAnimalSpeed(_config.AnimalSpeed);
-            }
-            else
-            {
-                Unsubscribe();
             }
         }
 

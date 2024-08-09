@@ -13,8 +13,10 @@ namespace Code.Controllers.Menu
 
         [SerializeField] private GameConfig _config;
         [SerializeField] private MainMenuView _view;
-
+        
         private readonly List<IActivatable> _panelControllers = new();
+        
+        private readonly Controllers _controllers = new();
         
         private NewSimulationPanelController _newSimulationPanelController;
         private StartButtonsPanelController _startButtonsPanelController;
@@ -38,6 +40,9 @@ namespace Code.Controllers.Menu
             _panelControllers.Add(_newSimulationPanelController);
             _panelControllers.Add(_startButtonsPanelController);
             
+            _controllers.AddController(_newSimulationPanelController);
+            _controllers.AddController(_startButtonsPanelController);
+            
             SwitchToPanel(_startButtonsPanelController);
         }
 
@@ -47,11 +52,7 @@ namespace Code.Controllers.Menu
             _newSimulationPanelController.CreateButtonClick -= LoadGameScene;
             _startButtonsPanelController.NewSimulationButtonClick -= SwitchToNewSimulationPanel;
             
-            foreach (var panelController in _panelControllers)
-            {
-                if (panelController.IsActive)
-                    panelController.SetActive(false);
-            }
+            _controllers.Cleanup();
         }
 
         #endregion

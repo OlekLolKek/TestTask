@@ -1,11 +1,12 @@
 ﻿using System;
 using Code.Interfaces;
+using Code.Interfaces.MonoBehaviourCycle;
 using Code.Views.MainMenu;
 
 
 namespace Code.Controllers.Menu
 {
-    public sealed class StartButtonsPanelController : IActivatable
+    public sealed class StartButtonsPanelController : IActivatable, ICleanable
     {
         #region Events
 
@@ -20,8 +21,8 @@ namespace Code.Controllers.Menu
         public bool IsActive { get; private set; }
 
         #endregion
-        
-        
+
+
         #region Fields
 
         private readonly StartButtonsPanelView _view;
@@ -36,17 +37,22 @@ namespace Code.Controllers.Menu
             _view = view;
         }
 
+        public void Cleanup()
+        {
+            if (IsActive)
+            {
+                SubscribeToView(false);
+            }
+        }
+
         #endregion
 
 
         #region Methods
 
-        public void SetActive(bool active)
+        private void SubscribeToView(bool subscribe)
         {
-            IsActive = active;
-            _view.SetActive(IsActive);
-
-            if (IsActive)
+            if (subscribe)
             {
                 _view.NewSimulationButtonClick += OnNewSimulationButtonClick;
                 _view.LoadSimulationButtonClick += OnLoadSimulationButtonClick;
@@ -56,6 +62,14 @@ namespace Code.Controllers.Menu
                 _view.NewSimulationButtonClick -= OnNewSimulationButtonClick;
                 _view.LoadSimulationButtonClick -= OnLoadSimulationButtonClick;
             }
+        }
+
+        public void SetActive(bool active)
+        {
+            IsActive = active;
+            _view.SetActive(IsActive);
+
+            SubscribeToView(IsActive);
         }
 
         private void OnNewSimulationButtonClick()
