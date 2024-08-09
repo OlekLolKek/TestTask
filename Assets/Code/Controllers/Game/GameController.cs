@@ -19,10 +19,20 @@ namespace Code.Controllers.Game
 
         #region Mono
 
-        private void Start()
+        private void Awake()
         {
             var animalsModel = new AnimalsModel(_config);
+            var worldModel = new WorldModel();
 
+            var worldController = new WorldController(_config, worldModel);
+            var animalsController = new AnimalsController(animalsModel, worldModel);
+            
+            _controllers.AddController(worldController);
+            _controllers.AddController(animalsController);
+        }
+
+        private void Start()
+        {
             _controllers.Start();
         }
 
@@ -43,7 +53,7 @@ namespace Code.Controllers.Game
 
         private void OnDestroy()
         {
-            _controllers.Dispose();
+            _controllers.Cleanup();
         }
 
         #endregion
