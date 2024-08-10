@@ -1,4 +1,6 @@
 ﻿using System;
+using Code.Data;
+using Code.Factories;
 using Code.Views.Game;
 
 
@@ -29,16 +31,34 @@ namespace Code.Models
         #endregion
 
 
+        #region Fields
+
+        private readonly GameConfig _gameConfig;
+
+        #endregion
+
+
+        #region CodeLife
+
+        public WorldModel(GameConfig gameConfig)
+        {
+            _gameConfig = gameConfig;
+        }
+
+        #endregion
+
+
         #region Methods
 
         /// <summary>
         /// Used to initialize the world after it's created.
         /// </summary>
-        /// <param name="world">The reference to the created WorldView.</param>
-        public void SetWorld(WorldView world)
+        public void InitializeWorld()
         {
-            World = world;
+            var worldFactory = new WorldFactory(_gameConfig);
 
+            World = worldFactory.Create();
+            
             WorldInitialized?.Invoke(World);
         }
 

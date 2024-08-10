@@ -21,19 +21,14 @@ namespace Code.Controllers.Game
 
         #region CodeLife
 
-        public WorldController(GameConfig config, WorldModel model)
+        public WorldController(WorldModel model)
         {
-            _config = config;
             _model = model;
         }
         
         public void Start()
         {
-            var worldFactory = new WorldFactory(_config);
-
-            var world = worldFactory.Create();
-
-            _model.SetWorld(world);
+            _model.InitializeWorld();
         }
 
         #endregion
