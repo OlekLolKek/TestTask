@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Code.Controllers.Menu
 {
-    public sealed class MainMenuController : MonoBehaviour
+    public sealed class MainMenuEntryPoint : MonoBehaviour
     {
         #region Fields
 

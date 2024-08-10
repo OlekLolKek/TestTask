@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Controllers.Game
 {
-    public sealed class GameController : MonoBehaviour
+    public sealed class GameEntryPoint : MonoBehaviour
     {
         #region Fields
 
