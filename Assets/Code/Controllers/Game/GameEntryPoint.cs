@@ -25,13 +25,16 @@ namespace Code.Controllers.Game
         private void Awake()
         {
             var animalsModel = new AnimalsModel(_config);
-            var worldModel = new WorldModel();
+            var worldModel = new WorldModel(_config);
+            var foodModel = new FoodModel(_config);
 
-            var worldController = new WorldController(_config, worldModel);
+            var worldController = new WorldController(worldModel);
             var animalsController = new AnimalsController(animalsModel, worldModel);
+            var foodController = new FoodController(foodModel, animalsModel, worldModel);
             
             _controllers.AddController(worldController);
             _controllers.AddController(animalsController);
+            _controllers.AddController(foodController);
         }
 
         private void Start()
