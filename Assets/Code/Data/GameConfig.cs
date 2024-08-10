@@ -15,12 +15,15 @@ namespace Code.Data
         [field: Header("In-game adjustable values")]
         [field: SerializeField] public int FieldSize { get; private set; }
         [field: SerializeField] public int AnimalCount { get; private set; }
-        [field: SerializeField] public int AnimalSpeed { get; private set; }
+        [field: SerializeField] public float AnimalSpeed { get; private set; }
 
         [field: Header("Spawn settings")]
         [field: SerializeField] public AnimalView AnimalPrefab { get; private set; }
         [field: SerializeField] public int AnimalSpawnHeight { get; private set; }
         [field: SerializeField] public WorldView WorldPrefab { get; private set; }
+        
+        [field: Header("Food settings")]
+        [field: SerializeField] public FoodConfig FoodConfig { get; private set; }
 
         [field: Header("Scene index settings")]
         [field: SerializeField] public SceneConfig SceneConfig { get; private set; }
@@ -53,7 +56,7 @@ namespace Code.Data
         /// Used to update the animal speed parameter in the GameConfig before switching the scenes.
         /// </summary>
         /// <param name="animalSpeed">The new speed value.</param>
-        public void SetAnimalSpeed(int animalSpeed)
+        public void SetAnimalSpeed(float animalSpeed)
         {
             AnimalSpeed = Mathf.Clamp(animalSpeed, Constants.MIN_ANIMAL_SPEED, Constants.MAX_ANIMAL_SPEED);
         }

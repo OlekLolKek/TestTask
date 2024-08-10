@@ -15,7 +15,7 @@ namespace Code.Views.MainMenu
         
         public event Action<int> FieldSizeSliderValueChanged;
         public event Action<int> AnimalCountSliderValueChanged;
-        public event Action<int> AnimalSpeedSliderValueChanged;
+        public event Action<float> AnimalSpeedSliderValueChanged;
         public event Action CreateButtonClick;
         public event Action BackButtonClick;
 
@@ -111,7 +111,7 @@ namespace Code.Views.MainMenu
         /// Changes the corresponding slider's and text's values to the specified number.
         /// </summary>
         /// <param name="value">The updated animal speed value.</param>
-        public void SetAnimalSpeed(int value)
+        public void SetAnimalSpeed(float value)
         {
             _animalSpeedSlider.value = value;
             _animalSpeedText.text = value.ToString();
@@ -129,7 +129,7 @@ namespace Code.Views.MainMenu
 
         private void OnAnimalSpeedSliderValueChanged(float value)
         {
-            AnimalSpeedSliderValueChanged?.Invoke((int)value);
+            AnimalSpeedSliderValueChanged?.Invoke(value);
         }
 
         private void OnCreateButtonClick()

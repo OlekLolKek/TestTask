@@ -8,8 +8,8 @@
         public const int MIN_FIELD_SIZE = 2;
         public const int MAX_FIELD_SIZE = 1000;
 
-        public const int MIN_ANIMAL_SPEED = 1;
-        public const int MAX_ANIMAL_SPEED = 100;
+        public const float MIN_ANIMAL_SPEED = 1.0f;
+        public const float MAX_ANIMAL_SPEED = 100.0f;
 
         public const int MIN_ANIMAL_COUNT = 1;
     }

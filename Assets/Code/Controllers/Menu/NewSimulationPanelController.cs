@@ -107,7 +107,7 @@ namespace Code.Controllers.Menu
             _view.SetAnimalCount(value);
         }
 
-        private void OnAnimalSpeedSliderValueChanged(int value)
+        private void OnAnimalSpeedSliderValueChanged(float value)
         {
             _config.SetAnimalSpeed(value);
             _view.SetAnimalSpeed(value);
