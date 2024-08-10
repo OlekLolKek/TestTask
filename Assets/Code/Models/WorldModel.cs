@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Views.Game;
 using UnityEngine;
 
 
@@ -8,21 +9,21 @@ namespace Code.Models
     {
         #region Events
 
-        public event Action<GameObject> WorldInitialized;
+        public event Action<WorldView> WorldInitialized;
 
         #endregion
         
         
         #region Properties
 
-        public GameObject World { get; private set; }
+        public WorldView World { get; private set; }
 
         #endregion
 
 
         #region Methods
 
-        public void SetWorld(GameObject world)
+        public void SetWorld(WorldView world)
         {
             World = world;
 

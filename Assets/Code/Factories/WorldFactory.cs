@@ -1,9 +1,13 @@
 ﻿using Code.Data;
+using Code.Views.Game;
 using UnityEngine;
 
 
 namespace Code.Factories
 {
+    /// <summary>
+    /// Creates a world for the game with the size specified in the GameConfig.
+    /// </summary>
     public sealed class WorldFactory
     {
         private readonly GameConfig _config;
@@ -13,13 +17,14 @@ namespace Code.Factories
             _config = config;
         }
         
-        public GameObject Create()
+        public WorldView Create()
         {
-            var level = Object.Instantiate(_config.WorldPrefab);
+            var world = Object.Instantiate(_config.WorldPrefab);
 
-            level.transform.localScale = new Vector3(_config.FieldSize, 1.0f, _config.FieldSize);
+            world.transform.localScale = new Vector3(_config.FieldSize, 1.0f, _config.FieldSize);
+            world.BakeNavMesh();
 
-            return level;
+            return world;
         }
     }
 }

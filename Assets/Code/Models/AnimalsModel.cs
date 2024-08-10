@@ -38,7 +38,7 @@ namespace Code.Models
 
         #region Methods
 
-        public void InitializeAnimals(GameObject world)
+        public void InitializeAnimals(WorldView world)
         {
             for (var i = 0; i < _config.AnimalCount; ++i)
             {

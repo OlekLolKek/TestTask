@@ -13,7 +13,7 @@ namespace Code.Factories
         /// <param name="config">The GameConfig with spawn information.</param>
         /// <param name="world">The World GameObject to spawn the animals on to.</param>
         /// <returns>The AnimalView of the spawned animal.</returns>
-        public AnimalView Create(GameConfig config, GameObject world)
+        public AnimalView Create(GameConfig config, WorldView world)
         {
             var worldPosition = world.transform.position;
             var fieldSize = (float)config.FieldSize;

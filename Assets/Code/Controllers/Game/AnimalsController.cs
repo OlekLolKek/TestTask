@@ -1,6 +1,7 @@
 ﻿using System;
 using Code.Interfaces.MonoBehaviourCycle;
 using Code.Models;
+using Code.Views.Game;
 using UnityEngine;
 
 
@@ -41,7 +42,7 @@ namespace Code.Controllers.Game
 
         #region Methods
 
-        private void OnWorldInitialized(GameObject world)
+        private void OnWorldInitialized(WorldView world)
         {
             _worldModel.WorldInitialized -= OnWorldInitialized;
             
