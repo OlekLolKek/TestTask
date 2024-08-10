@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Code.Controllers.Menu
 {
+    /// <summary>
+    /// Creates the controllers and models for the main menu. Calls Unity methods on the Controllers class.
+    /// </summary>
     public sealed class MainMenuEntryPoint : MonoBehaviour
     {
         #region Fields
