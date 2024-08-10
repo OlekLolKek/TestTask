@@ -18,6 +18,14 @@ MonoBehaviour:
   <AnimalPrefab>k__BackingField: {fileID: 8178059999691956253, guid: 1c65a295e3a1f71468fee34017bcbe19, type: 3}
   <AnimalSpawnHeight>k__BackingField: 1
   <WorldPrefab>k__BackingField: {fileID: -2089110350568117134, guid: 49870e64a2d84fd46ba32620c15f3f6f, type: 3}
+  <FoodConfig>k__BackingField:
+    <Prefab>k__BackingField: {fileID: 3179903202850219253, guid: 722734222ef8345499019f249ed1411f, type: 3}
+    <MinDistanceInUnits>k__BackingField: 0.75
+    <MaxDistanceInSeconds>k__BackingField: 5
+    <FoodLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 64
+    <FoodSize>k__BackingField: 0.75
   <SceneConfig>k__BackingField:
     <MainMenuSceneIndex>k__BackingField: 0
     <GameSceneIndex>k__BackingField: 1
