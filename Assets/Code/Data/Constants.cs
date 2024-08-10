@@ -12,5 +12,8 @@
         public const float MAX_ANIMAL_SPEED = 100.0f;
 
         public const int MIN_ANIMAL_COUNT = 1;
+
+        public const string FOOD_TAG = "Food";
+        public const string ANIMAL_TAG = "Animal";
     }
 }
