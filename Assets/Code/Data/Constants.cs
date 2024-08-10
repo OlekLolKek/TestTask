@@ -1,5 +1,8 @@
 ﻿namespace Code.Data
 {
+    /// <summary>
+    /// Used to store constant values used across the game.
+    /// </summary>
     public static class Constants
     {
         public const int MIN_FIELD_SIZE = 2;

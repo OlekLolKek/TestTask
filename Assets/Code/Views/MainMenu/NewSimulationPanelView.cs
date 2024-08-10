@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 namespace Code.Views.MainMenu
 {
-    public sealed class NewSimulationPanelView : BaseView
+    /// <summary>
+    /// Stores the components of the New Simulation window.
+    /// </summary>
+    public sealed class NewSimulationPanelView : ActivatableView
     {
         #region Events
-
+        
         public event Action<int> FieldSizeSliderValueChanged;
         public event Action<int> AnimalCountSliderValueChanged;
         public event Action<int> AnimalSpeedSliderValueChanged;
@@ -75,11 +78,45 @@ namespace Code.Views.MainMenu
             _backButton.onClick.RemoveListener(OnBackButtonClick);
         }
 
+        /// <summary>
+        /// Changes the animal count slider's max value to restrict the animal count the user can choose.
+        /// </summary>
+        /// <param name="maxValue">The new maxValue for the slider</param>
         public void SetAnimalCountSliderMaxValue(int maxValue)
         {
             _animalCountSlider.maxValue = maxValue;
         }
 
+        /// <summary>
+        /// Changes the corresponding slider's and text's values to the specified number.
+        /// </summary>
+        /// <param name="value">The updated field size value.</param>
+        public void SetFieldSize(int value)
+        {
+            _fieldSizeSlider.value = value;
+            _fieldSizeText.text = value.ToString();
+        }
+
+        /// <summary>
+        /// Changes the corresponding slider's and text's values to the specified number.
+        /// </summary>
+        /// <param name="value">The updated animal count value.</param>
+        public void SetAnimalCount(int value)
+        {
+            _animalCountSlider.value = value;
+            _animalCountText.text = value.ToString();
+        }
+
+        /// <summary>
+        /// Changes the corresponding slider's and text's values to the specified number.
+        /// </summary>
+        /// <param name="value">The updated animal speed value.</param>
+        public void SetAnimalSpeed(int value)
+        {
+            _animalSpeedSlider.value = value;
+            _animalSpeedText.text = value.ToString();
+        }
+        
         private void OnFieldSizeSliderValueChanged(float value)
         {
             FieldSizeSliderValueChanged?.Invoke((int)value);
@@ -93,24 +130,6 @@ namespace Code.Views.MainMenu
         private void OnAnimalSpeedSliderValueChanged(float value)
         {
             AnimalSpeedSliderValueChanged?.Invoke((int)value);
-        }
-
-        public void SetFieldSize(int value)
-        {
-            _fieldSizeSlider.value = value;
-            _fieldSizeText.text = value.ToString();
-        }
-
-        public void SetAnimalCount(int value)
-        {
-            _animalCountSlider.value = value;
-            _animalCountText.text = value.ToString();
-        }
-
-        public void SetAnimalSpeed(int value)
-        {
-            _animalSpeedSlider.value = value;
-            _animalSpeedText.text = value.ToString();
         }
 
         private void OnCreateButtonClick()

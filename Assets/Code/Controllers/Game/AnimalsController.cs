@@ -1,8 +1,6 @@
-﻿using System;
-using Code.Interfaces.MonoBehaviourCycle;
+﻿using Code.Interfaces.MonoBehaviourCycle;
 using Code.Models;
 using Code.Views.Game;
-using UnityEngine;
 
 
 namespace Code.Controllers.Game

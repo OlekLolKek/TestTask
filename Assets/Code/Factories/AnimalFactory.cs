@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Code.Factories
 {
+    /// <summary>
+    /// Creates Animals using the provided data.
+    /// </summary>
     public sealed class AnimalFactory
     {
         /// <summary>

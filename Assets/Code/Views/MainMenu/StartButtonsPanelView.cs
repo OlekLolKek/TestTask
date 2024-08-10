@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 namespace Code.Views.MainMenu
 {
-    public sealed class StartButtonsPanelView : BaseView
+    /// <summary>
+    /// Stores the components of the starting window with 2 buttons.
+    /// </summary>
+    public sealed class StartButtonsPanelView : ActivatableView
     {
         #region Events
 

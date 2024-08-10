@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Code.Controllers.Game
 {
+    /// <summary>
+    /// Creates the main controllers and models. Calls the MonoBehaviour methods on the Controllers class.
+    /// </summary>
     public sealed class GameEntryPoint : MonoBehaviour
     {
         #region Fields

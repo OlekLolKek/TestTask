@@ -4,23 +4,10 @@ using UnityEngine;
 
 namespace Code.Views
 {
-    public class BaseView : MonoBehaviour, IActivatable
+    /// <summary>
+    /// The base class used for other views in the game. Can be expanded in the future if needed.
+    /// </summary>
+    public class BaseView : MonoBehaviour
     {
-        #region Properties
-
-        public bool IsActive { get; private set; }
-
-        #endregion
-        
-        
-        #region Methods
-
-        public virtual void SetActive(bool active)
-        {
-            IsActive = active;
-            gameObject.SetActive(IsActive);
-        }
-
-        #endregion
     }
 }

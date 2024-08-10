@@ -2,15 +2,20 @@
 using Code.Data;
 using Code.Factories;
 using Code.Views.Game;
-using UnityEngine;
 
 
 namespace Code.Models
 {
+    /// <summary>
+    /// Stores and initialized the animals.
+    /// </summary>
     public sealed class AnimalsModel
     {
         #region Properties
 
+        /// <summary>
+        /// Stores the views of the spawned animals.
+        /// </summary>
         public HashSet<AnimalView> AnimalViews { get; } = new();
 
         #endregion
@@ -38,6 +43,10 @@ namespace Code.Models
 
         #region Methods
 
+        /// <summary>
+        /// Used to spawn new animals randomly according to the GameConfig.
+        /// </summary>
+        /// <param name="world">The animals get spawned on the specified world GameObject.</param>
         public void InitializeAnimals(WorldView world)
         {
             for (var i = 0; i < _config.AnimalCount; ++i)

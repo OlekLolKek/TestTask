@@ -6,6 +6,9 @@ using Code.Models;
 
 namespace Code.Controllers.Game
 {
+    /// <summary>
+    /// Controls the world's creation.
+    /// </summary>
     public sealed class WorldController : IStartable
     {
         #region Fields

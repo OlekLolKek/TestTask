@@ -7,6 +7,7 @@ namespace Code.Factories
 {
     /// <summary>
     /// Creates a world for the game with the size specified in the GameConfig.
+    /// Bakes the NavMesh surface after the world is created
     /// </summary>
     public sealed class WorldFactory
     {
