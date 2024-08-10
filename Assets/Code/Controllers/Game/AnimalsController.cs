@@ -33,6 +33,8 @@ namespace Code.Controllers.Game
             {
                 _worldModel.WorldInitialized -= OnWorldInitialized;
             }
+            
+            _model.Cleanup();
         }
 
         #endregion
