@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7330092280744025689}
   - component: {fileID: 8340481376829520927}
   - component: {fileID: 8178059999691956253}
+  - component: {fileID: 5672098295989149881}
   m_Layer: 0
   m_Name: Animal
   m_TagString: Untagged
@@ -118,3 +119,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4383c6fb0964d41a6799258f54e4779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &5672098295989149881
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679544296070677037}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
