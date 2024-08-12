@@ -12,15 +12,11 @@ namespace Code.Data
     {
         #region Properties
         
-        [field: Header("In-game adjustable values")]
-        [field: SerializeField] public int FieldSize { get; private set; }
-        [field: SerializeField] public int AnimalCount { get; private set; }
-        [field: SerializeField] public float AnimalSpeed { get; private set; }
+        [field: Header("World settings")]
+        [field: SerializeField] public WorldConfig WorldConfig { get; private set; }
 
-        [field: Header("Spawn settings")]
-        [field: SerializeField] public AnimalView AnimalPrefab { get; private set; }
-        [field: SerializeField] public int AnimalSpawnHeight { get; private set; }
-        [field: SerializeField] public WorldView WorldPrefab { get; private set; }
+        [field: Header("Animal settings")]
+        [field: SerializeField] public AnimalConfig AnimalConfig { get; private set; }
         
         [field: Header("Food settings")]
         [field: SerializeField] public FoodConfig FoodConfig { get; private set; }
@@ -39,8 +35,8 @@ namespace Code.Data
         /// <param name="fieldSize">The new size value.</param>
         public void SetFieldSize(int fieldSize)
         {
-            FieldSize = Mathf.Clamp(fieldSize, Constants.MIN_FIELD_SIZE, Constants.MAX_FIELD_SIZE);
-            AnimalCount = Mathf.Clamp(AnimalCount, Constants.MIN_ANIMAL_COUNT, GetMaxAnimalCount());
+            WorldConfig.SetFieldSize(Mathf.Clamp(fieldSize, Constants.MIN_FIELD_SIZE, Constants.MAX_FIELD_SIZE));
+            AnimalConfig.SetAnimalCount(Mathf.Clamp(AnimalConfig.AnimalCount, Constants.MIN_ANIMAL_COUNT, GetMaxAnimalCount()));
         }
 
         /// <summary>
@@ -49,7 +45,8 @@ namespace Code.Data
         /// <param name="animalCount">The new count value.</param>
         public void SetAnimalCount(int animalCount)
         {
-            AnimalCount = Mathf.Clamp(animalCount, Constants.MIN_ANIMAL_COUNT, FieldSize * FieldSize / 2);
+            AnimalConfig.SetAnimalCount(
+                Mathf.Clamp(animalCount, Constants.MIN_ANIMAL_COUNT, WorldConfig.FieldSize * WorldConfig.FieldSize / 2));
         }
 
         /// <summary>
@@ -58,7 +55,7 @@ namespace Code.Data
         /// <param name="animalSpeed">The new speed value.</param>
         public void SetAnimalSpeed(float animalSpeed)
         {
-            AnimalSpeed = Mathf.Clamp(animalSpeed, Constants.MIN_ANIMAL_SPEED, Constants.MAX_ANIMAL_SPEED);
+            AnimalConfig.SetAnimalSpeed(Mathf.Clamp(animalSpeed, Constants.MIN_ANIMAL_SPEED, Constants.MAX_ANIMAL_SPEED));
         }
 
         /// <summary>
@@ -67,7 +64,7 @@ namespace Code.Data
         /// <returns>The calculated max animal count.</returns>
         public int GetMaxAnimalCount()
         {
-            return FieldSize * FieldSize / 2;
+            return WorldConfig.FieldSize * WorldConfig.FieldSize / 2;
         }
 
         #endregion
