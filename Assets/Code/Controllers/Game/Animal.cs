@@ -20,12 +20,22 @@ namespace Code.Controllers.Game
         #endregion
 
 
+        #region Fields
+
+        private Food _assignedFood;
+
+        #endregion
+
+
         #region CodeLife
 
-        public Animal(AnimalView view, int id)
+        public Animal(AnimalView view, int id, float speed)
         {
             View = view;
             ID = id;
+
+            View.SetParentId(this);
+            View.NavMeshAgent.speed = speed;
 
             View.TriggerEnter += OnTriggerEnter;
         }
@@ -40,6 +50,18 @@ namespace Code.Controllers.Game
 
         #region Methods
 
+        public void SetFood(Food food)
+        {
+            _assignedFood = food;
+
+            UpdateDestination();
+        }
+
+        private void UpdateDestination()
+        {
+            View.NavMeshAgent.SetDestination(_assignedFood.View.transform.position);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag(Constants.FOOD_TAG))
@@ -51,7 +73,7 @@ namespace Code.Controllers.Game
             if (foodView.ID != ID)
                 return;
             
-            
+            Debug.Log("Uraaaa");
         }
 
         #endregion

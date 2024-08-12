@@ -28,7 +28,7 @@ namespace Code.Factories
 
             var view = Object.Instantiate(config.AnimalPrefab, worldPosition + offset, Quaternion.identity);
 
-            return new Animal(view, id);
+            return new Animal(view, id, config.AnimalSpeed);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Code.Controllers.Game
         {
             View = view;
             ID = id;
+
+            View.SetParentId(this);
         }
 
         #endregion

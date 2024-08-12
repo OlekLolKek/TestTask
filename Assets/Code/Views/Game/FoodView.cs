@@ -1,4 +1,5 @@
-﻿using Code.Interfaces;
+﻿using Code.Controllers.Game;
+using Code.Interfaces;
 
 
 namespace Code.Views.Game
@@ -14,9 +15,9 @@ namespace Code.Views.Game
 
         #region Methods
 
-        public void SetId(int id)
+        public void SetParentId(Food parent)
         {
-            ID = id;
+            ID = parent.ID;
         }
 
         #endregion

@@ -42,11 +42,13 @@ namespace Code.Models
         /// Used to create new Food object for each existing animal.
         /// </summary>
         /// <param name="animals">The HashSet of all Animal objects in the game.</param>
+        /// <param name="worldView">The WorldView of this scene's world object.</param>
         public void InitializeFood(HashSet<Animal> animals, WorldView worldView)
         {
             foreach (var animal in animals)
             {
                 var food = _factory.Create(animal, worldView);
+                animal.SetFood(food);
                 Food.Add(food);
             }
         }
