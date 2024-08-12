@@ -49,6 +49,16 @@ namespace Code.Views.Game
             _respawnParticles.Play();
         }
 
+        public void UpdateParticleTime(float time)
+        {
+            if (_respawnParticles.isPlaying)
+                _respawnParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            
+            var main = _respawnParticles.main;
+            main.startLifetime = time;
+            main.duration = time;
+        }
+
         #endregion
     }
 }

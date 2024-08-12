@@ -35,5 +35,11 @@ namespace Code.Data
         /// </summary>
         [field: Tooltip("How much time it takes for food to finish playing particles and respawn.")]
         [field: SerializeField] public float RespawnTime { get; private set; } = 1.0f;
+
+        /// <summary>
+        /// The time it takes to finish playing food particles.
+        /// </summary>
+        [field: Tooltip("The time it takes to finish playing food particles.")]
+        [field: SerializeField] public float BaseParticleTime { get; private set; } = 1.0f;
     }
 }

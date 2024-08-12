@@ -11,6 +11,7 @@ namespace Code.Controllers.Game
 
         private readonly FoodModel _model;
         private readonly AnimalsModel _animalsModel;
+        private readonly TimeModel _timeModel;
 
         private bool _initialized = false;
 
@@ -19,16 +20,20 @@ namespace Code.Controllers.Game
 
         #region CodeLife
 
-        public FoodController(FoodModel model, AnimalsModel animalsModel)
+        public FoodController(FoodModel model, AnimalsModel animalsModel, TimeModel timeModel)
         {
             _model = model;
             _animalsModel = animalsModel;
+            _timeModel = timeModel;
 
             _animalsModel.AnimalsInitialized += OnAnimalsInitialized;
+            _timeModel.TimeScaleChanged += OnTimeScaleChanged;
         }
 
         public void Cleanup()
         {
+            _timeModel.TimeScaleChanged -= OnTimeScaleChanged;
+            
             if (!_initialized)
             {
                 _animalsModel.AnimalsInitialized -= OnAnimalsInitialized;
@@ -56,6 +61,14 @@ namespace Code.Controllers.Game
             _animalsModel.AnimalsInitialized -= OnAnimalsInitialized;
             
             _model.InitializeFood(animals);
+        }
+
+        private void OnTimeScaleChanged(float newTimeScale)
+        {
+            foreach (var food in _model.Food)
+            {
+                food.UpdateTimeScale(newTimeScale);
+            }
         }
 
         #endregion

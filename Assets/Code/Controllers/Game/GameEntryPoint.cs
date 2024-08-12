@@ -1,6 +1,7 @@
 ﻿using Code.Data;
 using Code.Models;
 using Code.Services;
+using Code.Views.Game;
 using UnityEngine;
 
 
@@ -13,6 +14,7 @@ namespace Code.Controllers.Game
     {
         #region Fields
 
+        [SerializeField] private TimeControlView _timeControlView;
         [SerializeField] private GameConfig _config;
         [SerializeField] private Camera _camera;
         
@@ -28,16 +30,19 @@ namespace Code.Controllers.Game
             var animalsModel = new AnimalsModel(_config);
             var worldModel = new WorldModel(_config);
             var foodModel = new FoodModel(_config);
+            var timeModel = new TimeModel();
 
             var worldController = new WorldController(worldModel);
-            var animalsController = new AnimalsController(animalsModel, worldModel);
-            var foodController = new FoodController(foodModel, animalsModel);
+            var animalsController = new AnimalsController(animalsModel, worldModel, timeModel);
+            var foodController = new FoodController(foodModel, animalsModel, timeModel);
+            var timeController = new TimeController(_timeControlView, timeModel);
 
             var positionPicker = new PositionPicker(_config, animalsModel);
             
             _controllers.AddController(worldController);
             _controllers.AddController(animalsController);
             _controllers.AddController(foodController);
+            _controllers.AddController(timeController);
         }
 
         private void Start()

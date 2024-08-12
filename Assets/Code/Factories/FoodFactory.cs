@@ -1,7 +1,6 @@
 ﻿using Code.Controllers.Game;
 using Code.Data;
 using Code.Services;
-using Code.Views.Game;
 using UnityEngine;
 
 
@@ -38,7 +37,7 @@ namespace Code.Factories
 
             var view = Object.Instantiate(_foodConfig.Prefab, spawnPosition, Quaternion.identity);
 
-            return new Food(view, ownerAnimal.ID, _foodConfig.RespawnTime);
+            return new Food(view, ownerAnimal.ID, _foodConfig.RespawnTime, _foodConfig.BaseParticleTime);
         }
 
         #endregion

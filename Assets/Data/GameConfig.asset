@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86afe911e4434d5680c21ef09e6a22c2, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  <FieldSize>k__BackingField: 138
-  <AnimalCount>k__BackingField: 957
-  <AnimalSpeed>k__BackingField: 39
-  <AnimalPrefab>k__BackingField: {fileID: 8178059999691956253, guid: 1c65a295e3a1f71468fee34017bcbe19, type: 3}
-  <AnimalSpawnHeight>k__BackingField: 1
-  <WorldPrefab>k__BackingField: {fileID: -2089110350568117134, guid: 49870e64a2d84fd46ba32620c15f3f6f, type: 3}
+  <WorldConfig>k__BackingField:
+    <FieldSize>k__BackingField: 488
+    <WorldPrefab>k__BackingField: {fileID: -2089110350568117134, guid: 49870e64a2d84fd46ba32620c15f3f6f, type: 3}
+    <WorldSpawnPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <AnimalConfig>k__BackingField:
+    <AnimalPrefab>k__BackingField: {fileID: 8178059999691956253, guid: 1c65a295e3a1f71468fee34017bcbe19, type: 3}
+    <AnimalSpeed>k__BackingField: 12.356285
+    <AnimalCount>k__BackingField: 22561
+    <AnimalSpawnHeight>k__BackingField: 1
+    <AnimalSize>k__BackingField: 1
+    <AnimalLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 64
   <FoodConfig>k__BackingField:
     <Prefab>k__BackingField: {fileID: 3179903202850219253, guid: 722734222ef8345499019f249ed1411f, type: 3}
     <MinDistanceInUnits>k__BackingField: 0.75

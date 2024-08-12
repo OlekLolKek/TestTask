@@ -22,6 +22,7 @@ namespace Code.Controllers.Game
 
         #region Fields
 
+        private readonly float _speed;
         private Food _assignedFood;
 
         #endregion
@@ -31,11 +32,12 @@ namespace Code.Controllers.Game
 
         public Animal(AnimalView view, int id, float speed)
         {
+            _speed = speed;
             View = view;
             ID = id;
 
             View.SetParentId(this);
-            View.NavMeshAgent.speed = speed;
+            View.NavMeshAgent.speed = _speed;
 
             View.TriggerEnter += OnTriggerEnter;
         }
@@ -88,6 +90,12 @@ namespace Code.Controllers.Game
             _assignedFood.Respawned -= OnFoodRespawned;
             
             UpdateDestination();
+        }
+
+        public void UpdateTimeScale(float newTimeScale)
+        {
+            View.NavMeshAgent.speed = _speed * newTimeScale;
+
         }
 
         #endregion

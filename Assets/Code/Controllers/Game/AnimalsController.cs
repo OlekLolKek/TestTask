@@ -11,6 +11,7 @@ namespace Code.Controllers.Game
 
         private readonly AnimalsModel _model;
         private readonly WorldModel _worldModel;
+        private readonly TimeModel _timeModel;
 
         private bool _initialized = false;
 
@@ -19,16 +20,20 @@ namespace Code.Controllers.Game
         
         #region CodeLife
 
-        public AnimalsController(AnimalsModel model, WorldModel worldModel)
+        public AnimalsController(AnimalsModel model, WorldModel worldModel, TimeModel timeModel)
         {
             _model = model;
             _worldModel = worldModel;
+            _timeModel = timeModel;
 
+            _timeModel.TimeScaleChanged += UpdateTimeScale;
             _worldModel.WorldInitialized += OnWorldInitialized;
         }
 
         public void Cleanup()
         {
+            _timeModel.TimeScaleChanged -= UpdateTimeScale;
+            
             if (!_initialized)
             {
                 _worldModel.WorldInitialized -= OnWorldInitialized;
@@ -49,6 +54,14 @@ namespace Code.Controllers.Game
             _model.InitializeAnimals();
 
             _initialized = true;
+        }
+
+        private void UpdateTimeScale(float newTimeScale)
+        {
+            foreach (var animalKvp in _model.Animals)
+            {
+                animalKvp.Value.UpdateTimeScale(newTimeScale);
+            }
         }
 
         #endregion
