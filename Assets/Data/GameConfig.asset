@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86afe911e4434d5680c21ef09e6a22c2, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  <WorldConfig>k__BackingField:
+    <FieldSize>k__BackingField: 488
+    <WorldPrefab>k__BackingField: {fileID: -2089110350568117134, guid: 49870e64a2d84fd46ba32620c15f3f6f, type: 3}
+    <WorldSpawnPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <AnimalConfig>k__BackingField:
+    <AnimalPrefab>k__BackingField: {fileID: 8178059999691956253, guid: 1c65a295e3a1f71468fee34017bcbe19, type: 3}
+    <AnimalSpeed>k__BackingField: 12.356285
+    <AnimalCount>k__BackingField: 22561
+    <AnimalSpawnHeight>k__BackingField: 1
+    <AnimalSize>k__BackingField: 1
+    <AnimalLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 64
+  <FoodConfig>k__BackingField:
+    <Prefab>k__BackingField: {fileID: 3179903202850219253, guid: 722734222ef8345499019f249ed1411f, type: 3}
+    <MinDistanceInUnits>k__BackingField: 0.75
+    <MaxDistanceInSeconds>k__BackingField: 5
+    <FoodLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 128
+    <FoodSize>k__BackingField: 0.75
+    <RespawnTime>k__BackingField: 1
+  <SceneConfig>k__BackingField:
+    <MainMenuSceneIndex>k__BackingField: 0
+    <GameSceneIndex>k__BackingField: 1
