@@ -24,7 +24,7 @@ MonoBehaviour:
     <MaxDistanceInSeconds>k__BackingField: 5
     <FoodLayer>k__BackingField:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 128
     <FoodSize>k__BackingField: 0.75
   <SceneConfig>k__BackingField:
     <MainMenuSceneIndex>k__BackingField: 0

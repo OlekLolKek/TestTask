@@ -89,8 +89,11 @@ namespace Code.Factories
             {
                 return false;
             }
+
+            var halfExtents = new Vector3(_foodConfig.FoodSize / 2, _foodConfig.FoodSize / 2, _foodConfig.FoodSize / 2);
             
-            var overlappingFoodCount = Physics.OverlapSphereNonAlloc(spawnPosition, _foodConfig.FoodSize, _colliderBuffer, _foodConfig.FoodLayer);
+            var overlappingFoodCount = Physics.OverlapBoxNonAlloc(spawnPosition, halfExtents, _colliderBuffer,
+                Quaternion.identity, _foodConfig.FoodLayer);
             
             if (overlappingFoodCount <= 0)
             {
