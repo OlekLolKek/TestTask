@@ -31,13 +31,13 @@ namespace Code.Factories
         #region Methods
         
         
-        public Food Create(Animal ownerAnimal)
+        public Food Create(Animal ownerAnimal, float timeScale)
         {
             var spawnPosition = PositionPicker.Instance.PickRandomFoodPosition(ownerAnimal.ID);
 
             var view = Object.Instantiate(_foodConfig.Prefab, spawnPosition, Quaternion.identity);
 
-            return new Food(view, ownerAnimal.ID, _foodConfig.RespawnTime, _foodConfig.BaseParticleTime);
+            return new Food(view, ownerAnimal.ID, _foodConfig.RespawnTime, _foodConfig.BaseParticleTime, timeScale);
         }
 
         #endregion

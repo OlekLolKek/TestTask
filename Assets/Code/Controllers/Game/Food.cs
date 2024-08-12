@@ -11,7 +11,7 @@ namespace Code.Controllers.Game
     /// <summary>
     /// The logic controller for the Food objects.
     /// </summary>
-    public sealed class Food : IGetId, IUpdatable, ICleanable
+    public sealed class Food : IGetId, IUpdatable
     {
         #region Events
 
@@ -45,15 +45,15 @@ namespace Code.Controllers.Game
 
         #region CodeLife
 
-        public Food(FoodView view, int id, float respawnTime, float particleTime)
+        public Food(FoodView view, int id, float respawnTime, float particleTime, float startTimeScale)
         {
             View = view;
             ID = id;
             _respawnTime = respawnTime;
             _particleTime = particleTime;
+            _timeScale = startTimeScale;
 
             View.SetParentId(this);
-            View.RequestRespawn += OnRequestRespawn;
         }
 
         public void Update(float deltaTime)
@@ -69,7 +69,7 @@ namespace Code.Controllers.Game
             }
         }
 
-        private void OnRequestRespawn()
+        public void StartRespawn()
         {
             _timer = _respawnTime;
             
@@ -93,11 +93,6 @@ namespace Code.Controllers.Game
             _timeScale = newTimeScale;
 
             View.UpdateParticleTime(_particleTime / _timeScale);
-        }
-
-        public void Cleanup()
-        {
-            View.RequestRespawn -= OnRequestRespawn;
         }
 
         #endregion

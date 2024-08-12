@@ -30,7 +30,7 @@ namespace Code.Controllers.Game
             _timeModel.TimeScaleChanged += OnTimeScaleChanged;
         }
 
-        public void Cleanup()
+        public void Cleanup()       
         {
             _timeModel.TimeScaleChanged -= OnTimeScaleChanged;
             
@@ -38,8 +38,6 @@ namespace Code.Controllers.Game
             {
                 _animalsModel.AnimalsInitialized -= OnAnimalsInitialized;
             }
-            
-            _model.Cleanup();
         }
 
         #endregion
@@ -60,7 +58,7 @@ namespace Code.Controllers.Game
             _initialized = true;
             _animalsModel.AnimalsInitialized -= OnAnimalsInitialized;
             
-            _model.InitializeFood(animals);
+            _model.InitializeFood(animals, _timeModel.TimeScale);
         }
 
         private void OnTimeScaleChanged(float newTimeScale)

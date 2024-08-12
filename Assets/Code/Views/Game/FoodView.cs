@@ -8,16 +8,6 @@ namespace Code.Views.Game
 {
     public sealed class FoodView : BaseView, IGetId
     {
-        #region Events
-
-        /// <summary>
-        /// Called when the owner animal touches the food and should "eat" it.
-        /// </summary>
-        public event Action RequestRespawn;
-
-        #endregion
-        
-        
         #region Properties
 
         public int ID { get; private set; }
@@ -37,11 +27,6 @@ namespace Code.Views.Game
         public void SetParentId(Food parent)
         {
             ID = parent.ID;
-        }
-
-        public void Respawn()
-        {
-            RequestRespawn?.Invoke();
         }
 
         public void PlayParticles()

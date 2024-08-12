@@ -6,15 +6,12 @@ using UnityEngine;
 
 namespace Code.Controllers.Game
 {
-    public sealed class TimeController : IStartable,  ICleanable
+    public sealed class TimeController : ICleanable
     {
         #region Fields
 
         private readonly TimeControlView _view;
         private readonly TimeModel _timeModel;
-
-        private const float STARTING_TIME_SCALE = 1.0f;
-
         #endregion
         
         
@@ -37,11 +34,6 @@ namespace Code.Controllers.Game
 
 
         #region Methods
-
-        public void Start()
-        {
-            _timeModel.SetTimeScale(STARTING_TIME_SCALE);
-        }
 
         private void OnTimeSpeedSliderValueChanged(float value)
         {

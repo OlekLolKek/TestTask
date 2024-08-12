@@ -15,7 +15,7 @@ namespace Code.Models
         
         #region Properties
 
-        public float TimeScale { get; private set; }
+        public float TimeScale { get; private set; } = STARTING_TIME_SCALE;
 
         #endregion
 
@@ -24,6 +24,8 @@ namespace Code.Models
 
         private const float MIN_TIME_SCALE = 0.0f;
         private const float MAX_TIME_SCALE = 1000.0f;
+        
+        private const float STARTING_TIME_SCALE = 1.0f;
 
         #endregion
 

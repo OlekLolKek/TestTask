@@ -10,7 +10,7 @@ namespace Code.Controllers.Game
     /// <summary>
     /// The logic controller for the Animal objects.
     /// </summary>
-    public sealed class Animal : IGetId, ICleanable
+    public sealed class Animal : IGetId, IUpdatable, ICleanable
     {
         #region Properties
 
@@ -25,6 +25,8 @@ namespace Code.Controllers.Game
         private readonly float _speed;
         private Food _assignedFood;
 
+        private const float DISTANCE_THRESHOLD = 0.5f;
+
         #endregion
 
 
@@ -38,14 +40,10 @@ namespace Code.Controllers.Game
 
             View.SetParentId(this);
             View.NavMeshAgent.speed = _speed;
-
-            View.TriggerEnter += OnTriggerEnter;
         }
 
         public void Cleanup()
         {
-            View.TriggerEnter -= OnTriggerEnter;
-
             if (_assignedFood.Respawning)
             {
                 _assignedFood.Respawned -= OnFoodRespawned;
@@ -69,20 +67,17 @@ namespace Code.Controllers.Game
             View.NavMeshAgent.SetDestination(_assignedFood.View.transform.position);
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void Update(float deltaTime)
         {
-            if (!other.CompareTag(Constants.FOOD_TAG))
+            if (_assignedFood.Respawning)
                 return;
-
-            if (!other.TryGetComponent(out FoodView foodView))
-                return;
-
-            if (foodView.ID != ID)
-                return;
-
-            foodView.Respawn();
-
-            _assignedFood.Respawned += OnFoodRespawned;
+            
+            if ((View.transform.position - _assignedFood.View.transform.position).sqrMagnitude <= DISTANCE_THRESHOLD)
+            {
+                _assignedFood.StartRespawn();
+                
+                _assignedFood.Respawned += OnFoodRespawned;
+            }
         }
 
         private void OnFoodRespawned()

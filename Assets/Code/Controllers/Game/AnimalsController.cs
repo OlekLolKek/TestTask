@@ -5,7 +5,7 @@ using Code.Views.Game;
 
 namespace Code.Controllers.Game
 {
-    public sealed class AnimalsController : ICleanable
+    public sealed class AnimalsController : IUpdatable, ICleanable
     {
         #region Fields
 
@@ -46,6 +46,14 @@ namespace Code.Controllers.Game
 
 
         #region Methods
+
+        public void Update(float deltaTime)
+        {
+            foreach (var animalKvp in _model.Animals)
+            {
+                animalKvp.Value.Update(deltaTime);
+            }
+        }
 
         private void OnWorldInitialized(WorldView world)
         {

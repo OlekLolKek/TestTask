@@ -2,7 +2,6 @@
 using Code.Controllers.Game;
 using Code.Data;
 using Code.Factories;
-using Code.Interfaces.MonoBehaviourCycle;
 
 
 namespace Code.Models
@@ -10,7 +9,7 @@ namespace Code.Models
     /// <summary>
     /// Stores and initialized food on the map.
     /// </summary>
-    public sealed class FoodModel : ICleanable
+    public sealed class FoodModel
     {
         #region Properties
 
@@ -42,25 +41,15 @@ namespace Code.Models
         /// Used to create new Food object for each existing animal.
         /// </summary>
         /// <param name="animals">The HashSet of all Animal objects in the game.</param>
-        public void InitializeFood(Dictionary<int, Animal> animals)
+        public void InitializeFood(Dictionary<int, Animal> animals, float timeScale)
         {
             foreach (var animalKvp in animals)
             {
                 var animal = animalKvp.Value;
-                var food = _factory.Create(animal);
+                var food = _factory.Create(animal, timeScale);
                 animal.SetFood(food);
                 Food.Add(food);
             }
-        }
-
-        public void Cleanup()
-        {
-            foreach (var food in Food)
-            {
-                food.Cleanup();
-            }
-            
-            Food.Clear();
         }
 
         #endregion

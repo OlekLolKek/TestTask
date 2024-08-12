@@ -26,6 +26,7 @@ namespace Code.Services
         private readonly WorldConfig _worldConfig;
         private readonly FoodConfig _foodConfig;
         private readonly AnimalsModel _animalsModel;
+        private readonly TimeModel _timeModel;
 
         private readonly Collider[] _colliderBuffer = new Collider[3];
 
@@ -39,13 +40,14 @@ namespace Code.Services
 
         #region CodeLife
 
-        public PositionPicker(GameConfig config, AnimalsModel animalsModel)
+        public PositionPicker(GameConfig config, AnimalsModel animalsModel, TimeModel timeModel)
         {
             _animalConfig = config.AnimalConfig;
             _worldConfig = config.WorldConfig;
             _foodConfig = config.FoodConfig;
             _animalsModel = animalsModel;
-            
+            _timeModel = timeModel;
+
             Instance = this;
 
             CalculateMinMaxPositions(config.WorldConfig.WorldSpawnPosition);
@@ -82,8 +84,11 @@ namespace Code.Services
             {
                 Vector3 offset = Random.insideUnitCircle;
                 (offset.y, offset.z) = (offset.z, offset.y);
+
+                var maxDistance = Mathf.Min(_worldConfig.FieldSize,
+                    _foodConfig.MaxDistanceInSeconds * _animalConfig.AnimalSpeed * _timeModel.TimeScale);
                 
-                offset *= Random.Range(_foodConfig.MinDistanceInUnits, _foodConfig.MaxDistanceInSeconds * _animalConfig.AnimalSpeed);
+                offset *= Random.Range(_foodConfig.MinDistanceInUnits, maxDistance);
                 
                 spawnPosition = animalPosition + offset;
 

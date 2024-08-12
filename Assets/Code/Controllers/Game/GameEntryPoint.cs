@@ -37,7 +37,7 @@ namespace Code.Controllers.Game
             var foodController = new FoodController(foodModel, animalsModel, timeModel);
             var timeController = new TimeController(_timeControlView, timeModel);
 
-            var positionPicker = new PositionPicker(_config, animalsModel);
+            var positionPicker = new PositionPicker(_config, animalsModel, timeModel);
             
             _controllers.AddController(worldController);
             _controllers.AddController(animalsController);
