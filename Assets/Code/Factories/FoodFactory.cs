@@ -30,7 +30,12 @@ namespace Code.Factories
 
         #region Methods
         
-        
+        /// <summary>
+        /// Creates a new Food object and spawns its view in a random spot on the map.
+        /// </summary>
+        /// <param name="ownerAnimal">The owner animal of the food.</param>
+        /// <param name="timeScale">The starting timescale for the food.</param>
+        /// <returns>The created Food object.</returns>
         public Food Create(Animal ownerAnimal, float timeScale)
         {
             var spawnPosition = PositionPicker.Instance.PickRandomFoodPosition(ownerAnimal.ID);

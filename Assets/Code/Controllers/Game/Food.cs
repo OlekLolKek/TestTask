@@ -69,6 +69,9 @@ namespace Code.Controllers.Game
             }
         }
 
+        /// <summary>
+        /// Starts the respawn timer and plays the collection particles in the View
+        /// </summary>
         public void StartRespawn()
         {
             _timer = _respawnTime;
@@ -88,6 +91,10 @@ namespace Code.Controllers.Game
             Respawned?.Invoke();
         }
 
+        /// <summary>
+        /// Updates the timescale of the food collection particle system
+        /// </summary>
+        /// <param name="newTimeScale">The timescale value to set</param>
         public void UpdateTimeScale(float newTimeScale)
         {
             _timeScale = newTimeScale;

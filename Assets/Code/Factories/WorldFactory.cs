@@ -18,6 +18,11 @@ namespace Code.Factories
             _config = config;
         }
         
+        /// <summary>
+        /// Creates a world for the game with the size specified in the GameConfig.
+        /// Bakes the NavMesh surface after the world is created
+        /// </summary>
+        /// <returns>The WorldView component of the createc object.</returns>
         public WorldView Create()
         {
             var world = Object.Instantiate(_config.WorldConfig.WorldPrefab);

@@ -16,7 +16,6 @@ namespace Code.Controllers.Game
 
         [SerializeField] private TimeControlView _timeControlView;
         [SerializeField] private GameConfig _config;
-        [SerializeField] private Camera _camera;
         
         private readonly Controllers _controllers = new();
 

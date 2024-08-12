@@ -12,8 +12,7 @@ namespace Code.Controllers.Game
     public sealed class WorldController : IStartable
     {
         #region Fields
-
-        private readonly GameConfig _config;
+        
         private readonly WorldModel _model;
 
         #endregion

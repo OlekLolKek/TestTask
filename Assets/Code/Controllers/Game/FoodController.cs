@@ -30,7 +30,7 @@ namespace Code.Controllers.Game
             _timeModel.TimeScaleChanged += OnTimeScaleChanged;
         }
 
-        public void Cleanup()       
+        public void Cleanup()
         {
             _timeModel.TimeScaleChanged -= OnTimeScaleChanged;
             

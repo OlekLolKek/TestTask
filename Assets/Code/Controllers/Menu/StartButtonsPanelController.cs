@@ -10,6 +10,9 @@ namespace Code.Controllers.Menu
     {
         #region Events
 
+        /// <summary>
+        /// Called when the New Simulation button is clicked
+        /// </summary>
         public event Action NewSimulationButtonClick;
         public event Action LoadSimulationButtonClick;
 

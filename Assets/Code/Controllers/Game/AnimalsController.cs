@@ -5,6 +5,9 @@ using Code.Views.Game;
 
 namespace Code.Controllers.Game
 {
+    /// <summary>
+    /// Controls the behaviour of animals in the game
+    /// </summary>
     public sealed class AnimalsController : IUpdatable, ICleanable
     {
         #region Fields

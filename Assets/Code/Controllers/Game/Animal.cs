@@ -55,6 +55,10 @@ namespace Code.Controllers.Game
 
         #region Methods
 
+        /// <summary>
+        /// Used to assign the Food object after it's created
+        /// </summary>
+        /// <param name="food">The Food object to assign</param>
         public void SetFood(Food food)
         {
             _assignedFood = food;
@@ -87,10 +91,13 @@ namespace Code.Controllers.Game
             UpdateDestination();
         }
 
+        /// <summary>
+        /// Used to update the TimeScale when it's changed in TimeModel.
+        /// </summary>
+        /// <param name="newTimeScale">The new timescale value.</param>
         public void UpdateTimeScale(float newTimeScale)
         {
             View.NavMeshAgent.speed = _speed * newTimeScale;
-
         }
 
         #endregion

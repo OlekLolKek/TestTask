@@ -8,10 +8,16 @@ using Code.Views.MainMenu;
 
 namespace Code.Controllers.Menu
 {
+    /// <summary>
+    /// Controls the new simulation panel's behaviour
+    /// </summary>
     public sealed class NewSimulationPanelController : IActivatable, ICleanable
     {
         #region Events
 
+        /// <summary>
+        /// Called when the Back button is clicked
+        /// </summary>
         public event Action BackButtonClick;
 
         #endregion

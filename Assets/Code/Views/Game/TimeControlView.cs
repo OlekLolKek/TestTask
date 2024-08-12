@@ -45,9 +45,13 @@ namespace Code.Views.Game
 
         #region Methods
 
-        public void SetTimeSpeedText(float timeSpeed)
+        /// <summary>
+        /// Used to update the timescale text when the slider is moved.
+        /// </summary>
+        /// <param name="timeScale"></param>
+        public void SetTimeSpeedText(float timeScale)
         {
-            _timeSpeedText.text = timeSpeed.ToString();
+            _timeSpeedText.text = timeScale.ToString();
         }
 
         #endregion

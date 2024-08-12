@@ -41,6 +41,7 @@ namespace Code.Models
         /// Used to create new Food object for each existing animal.
         /// </summary>
         /// <param name="animals">The HashSet of all Animal objects in the game.</param>
+        /// <param name="timeScale">The timescale at the current moment.</param>
         public void InitializeFood(Dictionary<int, Animal> animals, float timeScale)
         {
             foreach (var animalKvp in animals)
