@@ -2,6 +2,7 @@
 using Code.Controllers.Game;
 using Code.Interfaces;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 namespace Code.Views.Game
@@ -23,6 +24,7 @@ namespace Code.Views.Game
 
         #region Properties
 
+        [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
         public int ID { get; private set; }
 
         #endregion
