@@ -5,7 +5,7 @@ using Code.Models;
 
 namespace Code.Controllers.Game
 {
-    public sealed class FoodController : ICleanable
+    public sealed class FoodController : IUpdatable, ICleanable
     {
         #region Fields
 
@@ -41,6 +41,14 @@ namespace Code.Controllers.Game
 
 
         #region Methods
+
+        public void Update(float deltaTime)
+        {
+            foreach (var food in _model.Food)
+            {
+                food.Update(deltaTime);
+            }
+        }
 
         private void OnAnimalsInitialized(Dictionary<int, Animal> animals)
         {

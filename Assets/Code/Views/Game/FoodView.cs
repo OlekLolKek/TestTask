@@ -1,6 +1,7 @@
 ﻿using System;
 using Code.Controllers.Game;
 using Code.Interfaces;
+using UnityEngine;
 
 
 namespace Code.Views.Game
@@ -9,6 +10,9 @@ namespace Code.Views.Game
     {
         #region Events
 
+        /// <summary>
+        /// Called when the owner animal touches the food and should "eat" it.
+        /// </summary>
         public event Action RequestRespawn;
 
         #endregion
@@ -17,6 +21,13 @@ namespace Code.Views.Game
         #region Properties
 
         public int ID { get; private set; }
+
+        #endregion
+
+
+        #region Fields
+
+        [SerializeField] private ParticleSystem _respawnParticles;
 
         #endregion
 
@@ -31,6 +42,11 @@ namespace Code.Views.Game
         public void Respawn()
         {
             RequestRespawn?.Invoke();
+        }
+
+        public void PlayParticles()
+        {
+            _respawnParticles.Play();
         }
 
         #endregion

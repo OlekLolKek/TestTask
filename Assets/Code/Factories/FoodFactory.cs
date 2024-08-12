@@ -38,7 +38,7 @@ namespace Code.Factories
 
             var view = Object.Instantiate(_foodConfig.Prefab, spawnPosition, Quaternion.identity);
 
-            return new Food(view, ownerAnimal.ID);
+            return new Food(view, ownerAnimal.ID, _foodConfig.RespawnTime);
         }
 
         #endregion

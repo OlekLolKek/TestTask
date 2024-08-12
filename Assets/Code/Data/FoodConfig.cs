@@ -23,11 +23,17 @@ namespace Code.Data
         [field: SerializeField] public float MaxDistanceInSeconds { get; private set; }
         
         [field: SerializeField] public LayerMask FoodLayer { get; private set; }
-        
+
         /// <summary>
         /// The approximate size of the food used to check for collisions when spawning.
         /// </summary>
         [field: Tooltip("Approximate size of the food used to check for collisions when spawning.")]
-        [field: SerializeField] public float FoodSize { get; private set; }
+        [field: SerializeField] public float FoodSize { get; private set; } = 0.75f;
+
+        /// <summary>
+        /// How much time it takes for food to finish playing particles and respawn.
+        /// </summary>
+        [field: Tooltip("How much time it takes for food to finish playing particles and respawn.")]
+        [field: SerializeField] public float RespawnTime { get; private set; } = 1.0f;
     }
 }

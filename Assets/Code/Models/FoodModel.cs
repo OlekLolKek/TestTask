@@ -14,7 +14,7 @@ namespace Code.Models
     {
         #region Properties
 
-        private HashSet<Food> Food { get; } = new();
+        public HashSet<Food> Food { get; } = new();
 
         #endregion
 

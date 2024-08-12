@@ -26,6 +26,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 128
     <FoodSize>k__BackingField: 0.75
+    <RespawnTime>k__BackingField: 1
   <SceneConfig>k__BackingField:
     <MainMenuSceneIndex>k__BackingField: 0
     <GameSceneIndex>k__BackingField: 1

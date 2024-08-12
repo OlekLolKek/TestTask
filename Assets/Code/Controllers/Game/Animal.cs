@@ -43,6 +43,11 @@ namespace Code.Controllers.Game
         public void Cleanup()
         {
             View.TriggerEnter -= OnTriggerEnter;
+
+            if (_assignedFood.Respawning)
+            {
+                _assignedFood.Respawned -= OnFoodRespawned;
+            }
         }
 
         #endregion
@@ -74,6 +79,13 @@ namespace Code.Controllers.Game
                 return;
 
             foodView.Respawn();
+
+            _assignedFood.Respawned += OnFoodRespawned;
+        }
+
+        private void OnFoodRespawned()
+        {
+            _assignedFood.Respawned -= OnFoodRespawned;
             
             UpdateDestination();
         }
