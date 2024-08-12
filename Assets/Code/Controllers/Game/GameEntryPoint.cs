@@ -16,7 +16,7 @@ namespace Code.Controllers.Game
         [SerializeField] private GameConfig _config;
         [SerializeField] private Camera _camera;
         
-        private readonly Controllers _controllers = new Controllers();
+        private readonly Controllers _controllers = new();
 
         #endregion
 
@@ -33,12 +33,11 @@ namespace Code.Controllers.Game
             var animalsController = new AnimalsController(animalsModel, worldModel);
             var foodController = new FoodController(foodModel, animalsModel);
 
-            var positionPicker = new PositionPicker(_config, worldModel, animalsModel);
+            var positionPicker = new PositionPicker(_config, animalsModel);
             
             _controllers.AddController(worldController);
             _controllers.AddController(animalsController);
             _controllers.AddController(foodController);
-            _controllers.AddController(positionPicker);
         }
 
         private void Start()

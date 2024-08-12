@@ -1,6 +1,6 @@
 ﻿using Code.Controllers.Game;
 using Code.Data;
-using Code.Views.Game;
+using Code.Services;
 using UnityEngine;
 
 
@@ -14,21 +14,14 @@ namespace Code.Factories
         /// <summary>
         /// Factory method that spawns an Animal specified in the config in a random position in the world.
         /// </summary>
-        /// <param name="config">The GameConfig with spawn information.</param>
-        /// <param name="world">The World GameObject to spawn the animals on to.</param>
+        /// <param name="animalConfig">The AnimalConfig taken from the main GameConfig.</param>
+        /// <param name="id">A unique identifier for the new animal</param>
         /// <returns>The Animal object for the spawned animal.</returns>
-        public Animal Create(GameConfig config, WorldView world, int id)
+        public Animal Create(AnimalConfig animalConfig, int id)
         {
-            var worldPosition = world.transform.position;
-            var fieldSize = (float)config.FieldSize;
-            var offsetX = Random.Range(-fieldSize / 2, fieldSize / 2);
-            var offsetZ = Random.Range(-fieldSize / 2, fieldSize / 2);
+            var view = Object.Instantiate(animalConfig.AnimalPrefab, PositionPicker.Instance.PickRandomAnimalPosition(), Quaternion.identity);
 
-            var offset = new Vector3(offsetX, config.AnimalSpawnHeight, offsetZ);
-
-            var view = Object.Instantiate(config.AnimalPrefab, worldPosition + offset, Quaternion.identity);
-
-            return new Animal(view, id, config.AnimalSpeed);
+            return new Animal(view, id, animalConfig.AnimalSpeed);
         }
     }
 }

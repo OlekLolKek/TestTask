@@ -66,12 +66,11 @@ namespace Code.Models
         /// <summary>
         /// Used to spawn new animals randomly according to the GameConfig.
         /// </summary>
-        /// <param name="world">The animals get spawned on the specified world GameObject.</param>
-        public void InitializeAnimals(WorldView world)
+        public void InitializeAnimals()
         {
-            for (var i = 0; i < _config.AnimalCount; ++i)
+            for (var i = 0; i < _config.AnimalConfig.AnimalCount; ++i)
             {
-                var animal = _factory.Create(_config, world, i);
+                var animal = _factory.Create(_config.AnimalConfig, i);
                 
                 Animals.Add(i, animal);
             }

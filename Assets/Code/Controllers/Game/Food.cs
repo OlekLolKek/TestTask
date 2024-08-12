@@ -68,11 +68,6 @@ namespace Code.Controllers.Game
 
         private void OnRequestRespawn()
         {
-            if (ID == 0)
-            {
-                Debug.Log($"Setting timer to {_respawnTime}");
-            }
-            
             _timer = _respawnTime;
             
             Respawning = true;
@@ -82,11 +77,6 @@ namespace Code.Controllers.Game
 
         private void Respawn()
         {
-            if (ID == 0)
-            {
-                Debug.Log($"Respawning");
-            }
-            
             Respawning = false;
             
             var newPosition = PositionPicker.Instance.PickRandomFoodPosition(ID);

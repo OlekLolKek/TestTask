@@ -46,7 +46,7 @@ namespace Code.Controllers.Game
         {
             _worldModel.WorldInitialized -= OnWorldInitialized;
             
-            _model.InitializeAnimals(world);
+            _model.InitializeAnimals();
 
             _initialized = true;
         }

@@ -20,9 +20,9 @@ namespace Code.Factories
         
         public WorldView Create()
         {
-            var world = Object.Instantiate(_config.WorldPrefab);
+            var world = Object.Instantiate(_config.WorldConfig.WorldPrefab);
 
-            world.transform.localScale = new Vector3(_config.FieldSize, 1.0f, _config.FieldSize);
+            world.transform.localScale = new Vector3(_config.WorldConfig.FieldSize, 1.0f, _config.WorldConfig.FieldSize);
             world.BakeNavMesh();
 
             return world;

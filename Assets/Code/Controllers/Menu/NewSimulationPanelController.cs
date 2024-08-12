@@ -88,9 +88,9 @@ namespace Code.Controllers.Menu
 
             if (IsActive)
             {
-                _view.SetFieldSize(_config.FieldSize);
-                _view.SetAnimalCount(_config.AnimalCount);
-                _view.SetAnimalSpeed(_config.AnimalSpeed);
+                _view.SetFieldSize(_config.WorldConfig.FieldSize);
+                _view.SetAnimalCount(_config.AnimalConfig.AnimalCount);
+                _view.SetAnimalSpeed(_config.AnimalConfig.AnimalSpeed);
             }
         }
 
