@@ -72,8 +72,10 @@ namespace Code.Controllers.Game
 
             if (foodView.ID != ID)
                 return;
+
+            foodView.Respawn();
             
-            Debug.Log("Uraaaa");
+            UpdateDestination();
         }
 
         #endregion

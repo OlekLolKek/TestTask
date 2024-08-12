@@ -16,7 +16,7 @@ namespace Code.Models
     {
         #region Events
 
-        public event Action<HashSet<Animal>> AnimalsInitialized;
+        public event Action<Dictionary<int, Animal>> AnimalsInitialized;
 
         #endregion
         
@@ -26,7 +26,7 @@ namespace Code.Models
         /// <summary>
         /// Stores the views of the spawned animals.
         /// </summary>
-        public HashSet<Animal> Animals { get; } = new();
+        public Dictionary<int, Animal> Animals = new();
 
         #endregion
         
@@ -50,10 +50,12 @@ namespace Code.Models
 
         public void Cleanup()
         {
-            foreach (var animal in Animals)
+            foreach (var animalKvp in Animals)
             {
-                animal.Cleanup();
+                animalKvp.Value.Cleanup();
             }
+            
+            Animals.Clear();
         }
 
         #endregion
@@ -71,10 +73,15 @@ namespace Code.Models
             {
                 var animal = _factory.Create(_config, world, i);
                 
-                Animals.Add(animal);
+                Animals.Add(i, animal);
             }
 
             AnimalsInitialized?.Invoke(Animals);
+        }
+
+        public Animal GetAnimalByID(int id)
+        {
+            return Animals.GetValueOrDefault(id);
         }
 
         #endregion

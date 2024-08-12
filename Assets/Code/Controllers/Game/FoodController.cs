@@ -11,7 +11,6 @@ namespace Code.Controllers.Game
 
         private readonly FoodModel _model;
         private readonly AnimalsModel _animalsModel;
-        private readonly WorldModel _worldModel;
 
         private bool _initialized = false;
 
@@ -20,11 +19,10 @@ namespace Code.Controllers.Game
 
         #region CodeLife
 
-        public FoodController(FoodModel model, AnimalsModel animalsModel, WorldModel worldModel)
+        public FoodController(FoodModel model, AnimalsModel animalsModel)
         {
             _model = model;
             _animalsModel = animalsModel;
-            _worldModel = worldModel;
 
             _animalsModel.AnimalsInitialized += OnAnimalsInitialized;
         }
@@ -35,6 +33,8 @@ namespace Code.Controllers.Game
             {
                 _animalsModel.AnimalsInitialized -= OnAnimalsInitialized;
             }
+            
+            _model.Cleanup();
         }
 
         #endregion
@@ -42,12 +42,12 @@ namespace Code.Controllers.Game
 
         #region Methods
 
-        private void OnAnimalsInitialized(HashSet<Animal> animals)
+        private void OnAnimalsInitialized(Dictionary<int, Animal> animals)
         {
             _initialized = true;
             _animalsModel.AnimalsInitialized -= OnAnimalsInitialized;
             
-            _model.InitializeFood(animals, _worldModel.World);
+            _model.InitializeFood(animals);
         }
 
         #endregion

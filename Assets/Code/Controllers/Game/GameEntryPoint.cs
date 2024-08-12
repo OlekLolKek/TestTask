@@ -1,5 +1,6 @@
 ﻿using Code.Data;
 using Code.Models;
+using Code.Services;
 using UnityEngine;
 
 
@@ -30,11 +31,14 @@ namespace Code.Controllers.Game
 
             var worldController = new WorldController(worldModel);
             var animalsController = new AnimalsController(animalsModel, worldModel);
-            var foodController = new FoodController(foodModel, animalsModel, worldModel);
+            var foodController = new FoodController(foodModel, animalsModel);
+
+            var positionPicker = new PositionPicker(_config, worldModel, animalsModel);
             
             _controllers.AddController(worldController);
             _controllers.AddController(animalsController);
             _controllers.AddController(foodController);
+            _controllers.AddController(positionPicker);
         }
 
         private void Start()
